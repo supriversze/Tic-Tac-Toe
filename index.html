@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Orion Battle Arena – A modern neon-themed Tic Tac Toe game for two players." />
+  <title>Tic Tac Toe | Orion Battle Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Animated Background Particles ===== -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===== Welcome Screen ===== -->
+  <section id="welcome-screen" class="screen active">
+    <div class="welcome-card">
+      <!-- Glowing Title -->
+      <h1 class="glow-title">Tic Tac Toe</h1>
+      <p class="subtitle">⚔️ Orion Battle Arena ⚔️</p>
+
+      <!-- Player Name Inputs -->
+      <div class="input-group">
+        <div class="input-wrapper">
+          <span class="input-icon">🎮</span>
+          <input
+            type="text"
+            id="player1-input"
+            placeholder="Player 1 Name"
+            maxlength="16"
+            autocomplete="off"
+          />
+        </div>
+        <div class="input-wrapper">
+          <span class="input-icon">🕹️</span>
+          <input
+            type="text"
+            id="player2-input"
+            placeholder="Player 2 Name"
+            maxlength="16"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <button id="start-btn" class="btn-primary">
+        <span class="btn-text">Start Play</span>
+        <span class="btn-glow"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== Game Screen ===== -->
+  <section id="game-screen" class="screen">
+    <!-- Scoreboard Header -->
+    <div class="scoreboard">
+      <div class="player-card player-x" id="player-x-card">
+        <span class="player-symbol">X</span>
+        <span class="player-name" id="p1-display">Player 1</span>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="player-card player-o" id="player-o-card">
+        <span class="player-symbol">O</span>
+        <span class="player-name" id="p2-display">Player 2</span>
+      </div>
+    </div>
+
+    <!-- Turn Indicator -->
+    <p class="turn-indicator" id="turn-indicator">
+      <span class="turn-dot"></span>
+      <span id="turn-text">Player 1's Turn</span>
+    </p>
+
+    <!-- 3×3 Board -->
+    <div class="board-container">
+      <div class="board" id="board">
+        <button class="cell" data-index="0" id="cell-0" aria-label="Cell 1"></button>
+        <button class="cell" data-index="1" id="cell-1" aria-label="Cell 2"></button>
+        <button class="cell" data-index="2" id="cell-2" aria-label="Cell 3"></button>
+        <button class="cell" data-index="3" id="cell-3" aria-label="Cell 4"></button>
+        <button class="cell" data-index="4" id="cell-4" aria-label="Cell 5"></button>
+        <button class="cell" data-index="5" id="cell-5" aria-label="Cell 6"></button>
+        <button class="cell" data-index="6" id="cell-6" aria-label="Cell 7"></button>
+        <button class="cell" data-index="7" id="cell-7" aria-label="Cell 8"></button>
+        <button class="cell" data-index="8" id="cell-8" aria-label="Cell 9"></button>
+      </div>
+      <!-- SVG overlay for the winning line -->
+      <svg class="win-line-svg" id="win-line-svg" viewBox="0 0 300 300" aria-hidden="true">
+        <line id="win-line" x1="0" y1="0" x2="0" y2="0" />
+      </svg>
+    </div>
+
+    <!-- Restart Button -->
+    <button id="restart-btn" class="btn-secondary">
+      🔄 Restart Game
+    </button>
+  </section>
+
+  <!-- ===== Winner Modal ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="winner-modal">
+      <div class="confetti-burst" id="confetti-burst" aria-hidden="true"></div>
+      <p class="modal-emoji">🎉</p>
+      <h2 class="modal-title" id="modal-title">Congratulations!</h2>
+      <p class="modal-sub" id="modal-sub">You Won The Game!</p>
+      <button id="play-again-btn" class="btn-primary">
+        <span class="btn-text">Play Again</span>
+        <span class="btn-glow"></span>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
